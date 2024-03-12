@@ -9,9 +9,9 @@ import reusableComponents.AbstractComponents;
 public class ValidateEntrataLogo extends AbstractComponents {
 
     WebDriver driver;
+
     public ValidateEntrataLogo(WebDriver driver) {
         super(driver);
-        //Initialization code
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }

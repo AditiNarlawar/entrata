@@ -4,7 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -14,23 +13,20 @@ import reusableComponents.AbstractComponents;
 
 import java.time.Duration;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
 public class ValidateProductsDropdown extends AbstractComponents {
     WebDriver driver;
+
     public ValidateProductsDropdown(WebDriver driver) {
         super(driver);
-        //Initialization code
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(xpath = "(//div[@class='main-nav-link'])[1]")
+    @FindBy(xpath = "(//div[@class='main-nav-link dark-section'])[1]")
     WebElement products;
-    @FindBy(xpath = "(//div[@class='content-cap'])[2]")
-    WebElement underProductsDropdown;
 
     @FindBy(tagName = "a")
     List<WebElement> linkCounts;
@@ -38,16 +34,13 @@ public class ValidateProductsDropdown extends AbstractComponents {
     @FindBy(css = ".fat-nav-grid .nav-group:first-of-type")
     List<WebElement> firstBlockProducts;
 
-    public void moveToProductsDropdown() throws InterruptedException {
-
+    public void validateProductTitlesInProductDropdown() throws InterruptedException {
         products.click();
 
         int totalLinksInFirstBlock = 0;
         List<String> consoleTitles = new ArrayList<>(); // Store console output titles
 
-        // Iterate over each WebElement in firstBlockProducts
         for (WebElement product : firstBlockProducts) {
-            // Find anchor elements within each WebElement
             List<WebElement> links = product.findElements(By.tagName("a"));
 
             // Increment the total count of links
@@ -70,9 +63,8 @@ public class ValidateProductsDropdown extends AbstractComponents {
         for (String windowHandle : getWindowHandles) {
             driver.switchTo().window(windowHandle);
             String title = driver.getTitle();
-            // Print the title of each tab
             System.out.println("Page Title: " + title);
-            consoleTitles.add(title); // Store the console output title
+            consoleTitles.add(title);
         }
 
         // Compare each console output title with the title of the opened pages
@@ -84,15 +76,12 @@ public class ValidateProductsDropdown extends AbstractComponents {
             //we are using contains methods as we are unsure about the sequence of the page title corresponding to console titles.
             Assert.assertTrue(consoleTitles.contains(pageTitle));
         }
-
-        // Print the total number of links in the first block
         System.out.println("Total number of links in the first block: " + totalLinksInFirstBlock);
     }
 
-    public void countOfLinks() {
+    public void validateLinkCount() {
         System.out.println("Total number of links are: " + linkCounts.size() + " Links");
-
+        Assert.assertEquals(linkCounts.size(), 196);
     }
-
 }
 

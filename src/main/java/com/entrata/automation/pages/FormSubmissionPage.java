@@ -2,7 +2,6 @@ package com.entrata.automation.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
@@ -13,21 +12,22 @@ public class FormSubmissionPage extends AbstractComponents {
 
     public FormSubmissionPage(WebDriver driver) {
         super(driver);
-        //Initialization code
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(xpath = "//a[@title='Schedule Demo Button']")
-    WebElement scheduleDemo;
     @FindBy(id = "FirstName")
     WebElement firstName;
+
     @FindBy(id = "LastName")
     WebElement lastName;
+
     @FindBy(id = "Email")
     WebElement email;
+
     @FindBy(xpath = "//input[@id='Company']")
     WebElement companyName;
+
     @FindBy(id = "Phone")
     WebElement phone;
 

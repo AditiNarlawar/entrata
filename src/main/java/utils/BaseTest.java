@@ -28,11 +28,9 @@ public class BaseTest {
             // Set the path to the ChromeDriver executable
             WebDriverManager.chromedriver().setup();
             driver = new ChromeDriver();
-        }
-        else if (browserName.equalsIgnoreCase("firefox")) {
+        } else if (browserName.equalsIgnoreCase("firefox")) {
             //Firefox browser code
-        }
-        else if (browserName.equalsIgnoreCase("edge")) {
+        } else if (browserName.equalsIgnoreCase("edge")) {
             //Edge browser code
         }
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
@@ -48,9 +46,8 @@ public class BaseTest {
         return landingPage;
     }
 
-   @AfterMethod(alwaysRun = true)
-    public void tearDown(){
-        // Close the browser
+    @AfterMethod(alwaysRun = true)
+    public void tearDown() {
         driver.close();
     }
 }
