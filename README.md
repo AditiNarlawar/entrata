@@ -38,7 +38,9 @@ This project is designed for automating tests for the Entrata website's user int
 1. Clone the project repository.
 2. Open the project in your preferred IDE.
 3. Configure the project dependencies and WebDriver executable.
-4. Run the test classes using TestNG.
+4. Locate the HomepageNavigationTestng.xml file in the project structure.
+   Right-click on the HomepageNavigationTestng.xml file.
+   Select run option to run the TestNG suite.
 
 ## Author
 
